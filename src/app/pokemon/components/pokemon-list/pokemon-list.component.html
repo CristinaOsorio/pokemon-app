@@ -10,11 +10,13 @@
   </thead>
 
   <tbody>
-    <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-      <td>Germany</td>
+    <tr class="pokemon" *ngFor="let itemPokemon of pokemon">
+      <td>{{ itemPokemon.name }}</td>
+      <td>
+        <img [src]="itemPokemon.image" alt="" />
+      </td>
+      <td>{{ itemPokemon.attack }}</td>
+      <td>{{ itemPokemon.defense }}</td>
       <td class="text-center">
         <button role="button">
           <i class="fas fa-pencil-alt"></i>
@@ -24,21 +26,5 @@
         </button>
       </td>
     </tr>
-    <tr></tr>
-    <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-      <td>Germany</td>
-      <td class="text-center">
-        <button role="button">
-          <i class="fas fa-pencil-alt"></i>
-        </button>
-        <button role="button">
-          <i class="fas fa-trash"></i>
-        </button>
-      </td>
-    </tr>
-    <tr></tr>
   </tbody>
 </table>
