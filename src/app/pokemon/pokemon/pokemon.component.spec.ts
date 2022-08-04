@@ -7,13 +7,17 @@ import { Observable, of, throwError } from 'rxjs';
 import { Pokemon } from '../interfaces/pokemon.interface';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-const pokemonInformation = [
-  {
+const pokemonInformation: Pokemon[] = [
+   {
     id:        1,
     name:      'Pikachu',
     image:     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png',
     attack:    50,
     defense:   30,
+    hp: 20,
+    type: 'Eléctrico',
+    id_author: 1,
+
   },
   {
     id:        2,
@@ -21,6 +25,9 @@ const pokemonInformation = [
     image:     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png',
     attack:    84,
     defense:   78,
+    hp: 20,
+    type: 'Fuego/Volador',
+    id_author: 1,
   }
 ];
 
