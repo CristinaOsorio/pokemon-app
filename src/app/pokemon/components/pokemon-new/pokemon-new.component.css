@@ -1,0 +1,7 @@
+input.is-invalid {
+  border: 1px #f12 solid !important;
+}
+
+div .invalid {
+  color: #f12;
+}

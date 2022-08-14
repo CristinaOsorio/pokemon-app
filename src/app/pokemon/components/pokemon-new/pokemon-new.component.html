@@ -1,38 +1,82 @@
-<div>
+<form [formGroup]="form" autocomplete="off">
   <div>
-    <label for="name">Nombre:</label>
-    <input type="text" />
-  </div>
-  <div>
-    <label for="name">Ataque:</label>
     <div>
-      <div class="value left">0</div>
-      <input type="range" min="0" max="11" value="0" step="1" />
-      <div class="value right">200</div>
+      <label for="name">Nombre:</label>
+      <input formControlName="name" [ngClass]="{'is-invalid': hasInvalidAndTouched('name')}" type="text" data-testId="name"/>
+      <div class="invalid">
+        <small *ngIf="hasErrorAndIsTocuhed('name', 'required')">
+          El campo ataque es requerido.
+        </small>
+      </div>
+    </div>
+    <div>
+      <label for="attack">Ataque:</label>
+      <div>
+        <div class="value left"></div>
+        <input formControlName="attack" type="range" step="1"  data-testId="attack" [ngClass]="{'is-invalid': hasInvalidAndTouched('attack')}"/>
+        <div class="value right">200</div>
+      </div>
+      <div class="invalid">
+        <small *ngIf="hasErrorAndIsTocuhed('attack', 'required')">
+          El campo ataque es requerido.
+        </small>
+        <small *ngIf="hasErrorAndIsTocuhed('attack', 'pattern')">
+          El campo ataque debe tener números enteros positivos.
+        </small>
+        <small *ngIf="hasErrorAndIsTocuhed('attack', 'max')">
+          El campo ataque tiene como límite 100.
+        </small>
+      </div>
     </div>
   </div>
-</div>
-<div class="row justify-content-between">
-  <div>
-    <label for="name">Imagen:</label>
-    <input type="text" />
-  </div>
-  <div>
-    <label for="name">Defensa:</label>
+  <div class="row justify-content-between">
     <div>
-      <div class="value left">0</div>
-      <input type="range" min="0" max="11" value="0" step="1" />
-      <div class="value right">200</div>
+      <label for="image">Imagen:</label>
+      <input formControlName="image" type="text" [ngClass]="{'is-invalid': hasInvalidAndTouched('image')}" data-testId="image"/>
+      <div class="invalid">
+        <small *ngIf="hasErrorAndIsTocuhed('image', 'required')">
+          El campo imagen es requerido.
+        </small>
+        <small *ngIf="hasErrorAndIsTocuhed('image', 'pattern')">
+          El campo imagen no es una url válida.
+        </small>
+      </div>
+    </div>
+    <div>
+      <label for="defense">Defensa:</label>
+      <div id="defense" name="defense">
+        <div class="value left">0</div>
+        <input formControlName="defense" type="range" step="1" data-testId="defense"[ngClass]="{'is-invalid': hasInvalidAndTouched('defense')}"/>
+        <div class="value right">200</div>
+      </div>
+      <div class="invalid">
+        <small *ngIf="hasErrorAndIsTocuhed('defense', 'required')">
+          El campo defensa es requerido.
+        </small>
+        <small *ngIf="hasErrorAndIsTocuhed('attack', 'pattern')">
+          El campo defensa debe tener números enteros positivos.
+        </small>
+        <small *ngIf="hasErrorAndIsTocuhed('attack', 'max')">
+          El campo defensa tiene como límite 100.
+        </small>
+      </div>
     </div>
   </div>
-</div>
-<div class="text-center">
-  <button class="btn" role="button">
-    <i class="fas fa-save"></i>
-    Guardar
-  </button>
-  <button class="btn" disabled>
-    <i class="fas fa-times"></i>
-    Cancelar
-  </button>
-</div>
+  <div class="text-center">
+    <button
+      type="submit"
+      class="btn"
+      role="button"
+      [disabled]="form.invalid"
+      (click)="save()"
+       data-testId="save"
+    >
+      <i class="fas fa-save"></i>
+      Guardar
+    </button>
+    <button class="btn" (click)="cancel()" type="reset" data-testId="cancel">
+      <i class="fas fa-times"></i>
+      Cancelar
+    </button>
+  </div>
+</form>

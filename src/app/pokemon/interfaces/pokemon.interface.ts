@@ -10,7 +10,7 @@ export interface Pokemon {
 }
 
 export interface CreatePokemonDTO extends Omit<Pokemon, 'id' | 'id_author'> {
-  idAuthor: number;
+  idAuthor: 1;
 }
 
 export interface UpdatePokemonDTO extends Omit<Pokemon, 'id' | 'id_author'> {}
